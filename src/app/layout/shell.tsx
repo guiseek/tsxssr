@@ -14,10 +14,10 @@ export function Shell(props: MainProps) {
 
   return (
     <>
-      <Header title="Patterns" />
+      <Header title="patterns" />
       <Nav links={links} />
       <Outlet routes={props.routes} />
-      <Footer company="Lucas" year={year} />
+      <Footer company="tsxssr" year={year} />
     </>
   )
 }
