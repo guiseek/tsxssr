@@ -6,9 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ssr": "ts-node --esm tools/ssr.ts"
   },
   "devDependencies": {
+    "@types/node": "^20.5.9",
+    "@types/puppeteer": "^7.0.4",
+    "puppeteer": "^21.1.1",
+    "sass": "^1.66.1",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

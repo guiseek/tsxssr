@@ -20,7 +20,7 @@ declare namespace JSX {
   // }
 
   // interface Element extends Partial<EventHandlers & HTMLElement> {
-  interface Element  {
+  interface Element {
     // (props: Record<`di:${string}` | string, any>): void
     // [attr: 'di']: any
   }

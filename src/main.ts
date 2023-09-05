@@ -1,4 +1,4 @@
-import { App } from './app/app'
-import './style.css'
+import {App} from './app/app'
+import './style.scss'
 
 appRoot.append(App() as Node)

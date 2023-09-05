@@ -1,9 +1,10 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2020"],
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -13,17 +14,12 @@
     "isolatedModules": true,
     "noEmit": true,
 
-    "jsx": "react",
-    "jsxFactory": "TSX.factory",
-    "jsxFragmentFactory": "TSX.fragment",
-    
-    "typeRoots": ["@types"],
+    "types": ["node"],
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"]
+  }
 }

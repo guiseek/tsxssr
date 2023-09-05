@@ -1,3 +1,3 @@
-import { token } from '../di/token';
+import {token} from '../di/token'
 
-export const HttpToken = token('Http');
+export const HttpToken = token('Http')
