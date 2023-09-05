@@ -1,9 +1,7 @@
-import {DI} from '../core/di/di'
-import {Fetch} from '../core/http'
-import {Shell} from '../layout/shell'
-import {Products} from '../pages/products'
-import {Home, Items} from '../pages'
-import {Route} from '../utilities'
+import {Home, Products, Items} from './pages'
+import {Shell} from './layout/shell'
+import {Route} from './utilities'
+import {DI, Fetch} from '../core'
 
 DI.register({
   for: 'http',

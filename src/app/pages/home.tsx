@@ -1,4 +1,4 @@
-import {useContent} from '../core/hooks/use-content'
+import {useContent} from '../../core'
 
 export function Home() {
   const search = useContent('')

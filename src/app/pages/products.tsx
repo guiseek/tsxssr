@@ -1,4 +1,4 @@
-import {Http} from '../core/http'
+import {Http} from '../../core'
 
 interface ItemsProps {
   http: Http | boolean

@@ -11,12 +11,18 @@ function findByPath(routes: Route[], path: string) {
 export function Outlet(props: OutletProps) {
   const main = document.createElement('main')
 
+  function getRouteOrHome(path: string) {
+    return findByPath(props.routes, path) ?? props.routes.shift()
+  }
+
   function changeRoute(path: string) {
-    const route = findByPath(props.routes, path) ?? props.routes.shift()
-    while (main.firstChild) {
-      main.removeChild(main.firstChild)
-    }
+    const route = getRouteOrHome(path)
+
     if (route) {
+      while (main.firstChild) {
+        main.removeChild(main.firstChild)
+      }
+
       if (typeof route.page === 'function') {
         main.appendChild(route.page() as Node)
       } else {
