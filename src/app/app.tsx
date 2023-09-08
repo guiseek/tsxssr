@@ -1,12 +1,7 @@
-import {Home, Products, Items} from './pages'
+import {Blog, States, Home, Products} from './pages'
 import {Shell} from './layout/shell'
 import {Route} from './utilities'
-import {DI, Fetch} from '../core'
-
-DI.register({
-  for: 'http',
-  use: Fetch,
-})
+import {} from './pages/states'
 
 export function App() {
   const routes: Route[] = [
@@ -18,14 +13,19 @@ export function App() {
       },
     },
     {
-      path: '/itens',
-      title: 'Itens',
-      page: () => <Items />,
+      path: '/states',
+      title: 'States',
+      page: () => <States />,
+    },
+    {
+      path: '/blog',
+      title: 'Blog',
+      page: () => <Blog http />,
     },
     {
       path: '/produtos',
       title: 'Produtos',
-      page: () => <Products http />,
+      page: () => <Products />,
     },
   ]
 

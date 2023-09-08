@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "ssr": "ts-node --esm tools/ssr.ts"
+    "ssr": "ts-node --esm tools/ssr.ts",
+    "posts": "ts-node --esm tools/posts.ts"
   },
   "devDependencies": {
     "@types/node": "^20.5.9",
@@ -17,5 +18,8 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "marked": "^8.0.1"
   }
 }

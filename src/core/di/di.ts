@@ -15,7 +15,7 @@ export class DI {
     return this.#container.has(type)
   }
 
-  static inject = <T>(type: Abstract<T> | string | symbol) => {
+  static inject = <T>(type: Abstract<T> | string | symbol): T => {
     try {
       return this.#container.get(type)
     } catch {

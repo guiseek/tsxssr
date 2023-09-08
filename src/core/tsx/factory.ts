@@ -20,8 +20,19 @@ const createHTML = <K extends keyof HTMLElementTagNameMap>(
   tag: K,
   props: Props = {}
 ) => {
-  const element = document.createElementNS('http://www.w3.org/1999/xhtml', tag)
-  return Object.assign(element, props) as HTMLElementTagNameMap[K]
+  const element = document.createElement(tag)
+  for (const key in props) {
+    type Key = keyof typeof element
+
+    const k = key === 'datalist' ? 'list' : (key as Key)
+
+    if (k === 'list') {
+      element.setAttribute(k, props[k].toString())
+    } else {
+      element[k] = props[k] as any
+    }
+  }
+  return element as HTMLElementTagNameMap[K]
 }
 
 const createElement = <K extends keyof TagNameMap>(
@@ -45,7 +56,10 @@ export class TSX {
         let normalizedProp = prop
 
         if (prop.startsWith('on:')) {
+          console.log(prop)
+
           normalizedProp = prop.replace(':', '')
+          console.log(normalizedProp)
         }
 
         const current = {[normalizedProp]: value}

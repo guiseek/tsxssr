@@ -1,27 +1,24 @@
 import {useContent} from '../../core'
+import {intercept} from '../utilities'
 
 export function Home() {
-  const search = useContent('')
+  const name = useContent('')
 
-  function onSearch<T>(target: T) {
-    search.update((target as HTMLInputElement).value)
+  const onInput = (input: HTMLInputElement) => {
+    name.update(input.value)
   }
 
   return (
     <>
       <h2>Home</h2>
 
-      <form>
-        <label>Termo de pesquisa</label>
-        <input
-          type="search"
-          name="term"
-          id="term"
-          on:input={(ev) => onSearch(ev.target)}
-        />
-      </form>
+      <input
+        name="yourname"
+        placeholder="Qual seu nome?"
+        on:input={intercept('target')(onInput)}
+      />
 
-      <h3>{search}</h3>
+      <h3>Seu nome é: {name}</h3>
     </>
   )
 }

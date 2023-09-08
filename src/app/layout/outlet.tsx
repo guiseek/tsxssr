@@ -10,6 +10,7 @@ function findByPath(routes: Route[], path: string) {
 
 export function Outlet(props: OutletProps) {
   const main = document.createElement('main')
+  main.role = 'contentinfo'
 
   function getRouteOrHome(path: string) {
     return findByPath(props.routes, path) ?? props.routes.shift()

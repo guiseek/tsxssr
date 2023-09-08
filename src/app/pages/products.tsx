@@ -1,37 +1,58 @@
-import {Http} from '../../core'
+import {currency, filterFor, intercept} from '../utilities'
+import {LiveRegion, useState} from '../../core'
+import {Product, Products} from '../interfaces'
+import {ProductService} from '../ports'
+import {useInject} from '../uses'
 
-interface ItemsProps {
-  http: Http | boolean
-}
-
-export interface Products {
+interface TableProps {
   products: Product[]
-  total: number
-  skip: number
-  limit: number
 }
 
-export interface Product {
-  id: number
-  title: string
-  description: string
-  price: number
-  discountPercentage: number
-  rating: number
-  stock: number
-  brand: string
-  category: string
-  thumbnail: string
-  images: string[]
+function Table({products}: TableProps) {
+  return (
+    <table>
+      <tbody>
+        {products.map((product) => (
+          <tr>
+            <td>{product.id}</td>
+            <td>{product.title}</td>
+            <td>{currency.format(product.price)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
 }
 
-export function Products(props: ItemsProps) {
-  if (typeof props.http !== 'boolean')
-    props.http
-      .get<Products>(`https://dummyjson.com/products`)
-      .then((products) => {
-        console.table(products.products)
-      })
+const initialState = {
+  limit: 10,
+  skip: 0,
+  total: 0,
+  products: [],
+}
 
-  return <h2>Produtos</h2>
+export function Products() {
+  const product = useInject(ProductService)
+  const [setProducts, getProducts] = useState<Products>(initialState)
+
+  const table = LiveRegion<TableProps>(Table)
+
+  product.getProducts().then(setProducts).then(table.render)
+
+  const onSearch = (input: HTMLInputElement) => {
+    const products = getProducts().products.filter(filterFor(input.value))
+    table.render({...initialState, products})
+  }
+
+  return (
+    <>
+      <h2>Produtos</h2>
+      <input
+        type="search"
+        placeholder="Busque por um item"
+        on:input={intercept('target')(onSearch)}
+      />
+      {table}
+    </>
+  )
 }
