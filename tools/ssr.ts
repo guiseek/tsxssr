@@ -35,8 +35,13 @@ function normalizePath(rawPptPath: string) {
     // If not home, create path
     if (!existsSync(path)) mkdirSync(path, {recursive: true})
 
-    // Write HTML content to path
-    writeFileSync(join(path, `index.html`), await page.content())
+    await new Promise<void>((resolve) => {
+      setTimeout(async () => {
+        // Write HTML content to path
+        writeFileSync(join(path, `index.html`), await page.content())
+        resolve()
+      }, 1000)
+    })
   }
 
   await links.dispose()
