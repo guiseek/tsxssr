@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --base=tsxssr",
     "preview": "vite preview",
     "ssr": "ts-node --esm tools/ssr.ts",
     "posts": "ts-node --esm tools/posts.ts"
