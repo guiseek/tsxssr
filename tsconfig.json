@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
 
-    "jsx": "react",
+    "jsx": "preserve",
     "jsxFactory": "TSX.factory",
     "jsxFragmentFactory": "TSX.fragment",
 

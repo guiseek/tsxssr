@@ -18,6 +18,8 @@ export function Outlet(props: OutletProps) {
 
   function changeRoute(path: string) {
     const route = getRouteOrHome(path)
+    console.log(route);
+    
 
     if (route) {
       while (main.firstChild) {

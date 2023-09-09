@@ -12,13 +12,13 @@ export function Home() {
     <>
       <h2>Home</h2>
 
+      <h3>Seu nome é: {name}</h3>
+
       <input
         name="yourname"
         placeholder="Qual seu nome?"
         on:input={intercept('target')(onInput)}
       />
-
-      <h3>Seu nome é: {name}</h3>
     </>
   )
 }

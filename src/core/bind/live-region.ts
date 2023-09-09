@@ -1,9 +1,11 @@
+import {createElement} from '../utilities'
+
 export function LiveRegion<T>(fn: (props: T) => JSX.Element) {
-  const fragment = document.createElement('section')
-  fragment.role = 'region'
-  fragment.ariaLive = 'polite'
+  const container = createElement('div')
+  container.role = 'region'
+  container.ariaLive = 'polite'
   const render = (props: T) => {
-    fragment.replaceChildren(TSX.factory(fn, props))
+    container.replaceChildren(TSX.factory(fn, props))
   }
-  return Object.assign(fragment, {render})
+  return Object.assign(container, {render})
 }

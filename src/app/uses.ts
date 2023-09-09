@@ -4,6 +4,10 @@ import {Abstract, DI, Fetch, Http} from '../core'
 
 DI.register(
   {
+    for: 'base',
+    use: '/tsxssr'
+  },
+  {
     for: Http,
     use: Fetch,
   },

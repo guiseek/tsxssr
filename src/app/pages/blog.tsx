@@ -1,14 +1,29 @@
 import {LiveRegion} from '../../core'
+import {Loader} from '../components'
 
 interface LiveProps {
   title: string
 }
 
 export function Blog() {
-  const fragment = LiveRegion<LiveProps>((props) => <h1>{props.title}</h1>)
-  console.log(fragment)
+  const titleFn = (props: LiveProps) => {
+    return <h1>{props.title}</h1>
+  }
+  
+  const title = LiveRegion<LiveProps>(titleFn)
+  const loader = LiveRegion(Loader)
 
-  setTimeout(() => fragment.render({title: 'Título'}), 1000)
+  loader.render({active: true})
 
-  return <>{fragment}</>
+  setTimeout(() => {
+    loader.render({active: false})
+    title.render({title: 'Título'})
+  }, 2000)
+
+  return (
+    <>
+      {loader}
+      {title}
+    </>
+  )
 }

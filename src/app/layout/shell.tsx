@@ -14,7 +14,7 @@ export function Shell(props: MainProps) {
 
   return (
     <>
-      <Header title="patterns" />
+      <Header title="tsx & native web & patterns" />
       <Nav links={links} />
       <Outlet routes={props.routes} />
       <Footer company="tsxssr" year={year} />

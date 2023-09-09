@@ -1,29 +1,30 @@
 import {Blog, States, Home, Products} from './pages'
 import {Shell} from './layout/shell'
 import {Route} from './utilities'
-import {} from './pages/states'
+import {DI} from '../core'
 
 export function App() {
+  const base = DI.inject('base')
   const routes: Route[] = [
     {
-      path: '/',
+      path: `${base}/`,
       title: 'Página inicial',
       page: () => {
         return <Home />
       },
     },
     {
-      path: '/states',
+      path: `${base}/states`,
       title: 'States',
       page: () => <States />,
     },
     {
-      path: '/blog',
+      path: `${base}/blog`,
       title: 'Blog',
       page: () => <Blog http />,
     },
     {
-      path: '/produtos',
+      path: `${base}/produtos`,
       title: 'Produtos',
       page: () => <Products />,
     },
